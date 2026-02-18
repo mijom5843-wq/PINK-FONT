@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            background-color: #ffffff; 
+            margin: 0; 
+            overflow: hidden; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            perspective: 1200px;
+        }
+        #L{
+            position: absolute;
+            width: 450vw;
+            height: 450vh;
+            color: #ff69b4;
+            font-family: 'Courier New', monospace;
+            font-size: 9px;
+            line-height: 8px;
+            opacity: 0.22;
+            z-index: 1;
+            pointer-events: none;
+            word-break: break-all;
+            animation: vortex_spin 150s linear infinite;
+        }
+        @keyframes vortex_spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        #M {
+            position: relative;
+            z-index: 100;
+            text-align: center;
+            font-family: 'Impact', 'Anton', sans-serif;
+            font-size: 8.5rem;
+            color: #E38792;
+            line-height: 0.82;
+            letter-spacing: -3px;
+            text-transform: uppercase;
+            filter: drop-shadow(0 0 20px rgba(227, 135, 146, 0.45));
+            animation: float_3d 10s ease-in-out infinite;
+        }
+        @keyframes float_3d {
+            0%, 100% { transform: rotateY(-12deg) rotateX(5deg); }
+            50% { transform: rotateY(12deg) rotateX(-5deg); }
+        }
+        .row { display: block; margin: 4px 0; }
+        .popup_text {
+            position: absolute;
+            font-family: 'Permanent Marker', cursive;
+            color: #E38792;
+            font-size: 2.5rem;
+            pointer-events: none;
+            z-index: 205;
+            animation: spring_pop 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            text-shadow: 2px 2px 0px #fff, 0px 0px 12px rgba(227, 135, 146, 0.6);
+            white-space: nowrap;
+        }
+        @keyframes spring_pop {
+            0% { transform: scale(0) rotate(-15deg); opacity: 0; }
+            20% { opacity: 1; transform: scale(1.1) rotate(5deg); }
+            80% { opacity: 1; }
+            100% { transform: scale(1.3) rotate(10deg) translateY(-80px); opacity: 0; }
+        }
+        .confetti_bit {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            z-index: 200;
+            animation: scatter 1.2s ease-out forwards;
+        }
+        @keyframes scatter {
+            0% { transform: translate(0,0) rotate(0deg); opacity: 1; }
+            100% { transform: translate(var(--tx), var(--ty)) rotate(720deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div id="L"></div>
+    <div id="M"></div>
+<script>
+    (function(_0x_vault_prime) {
+
+        const _0x_q_codes = [[1044, 1086, 1073, 1088, 1077, 1077], [1073, 1091, 1076, 1100, 1090, 1077], 
+        [1072], [1090, 1086], [1082, 1072, 1082], [1083, 1086, 1093, 1080]];
+        const nerd = "hiii nerdyyy why are u reading this u nerd? okey dokie ";
+        const popi = ["Blueberry tiramisu", "Matcha tiramisu", "Strawberry tiramisu"];
+        const _hex_palette = ["#E38792", "#FFB6C1", "#FF69B4", "#DA70D6"];
+        const _bg = document.getElementById('L');
+        const _mqe = document.getElementById('M');
+        let _stream_buf = "";
+        for(let i=0; i<20000; i++) {
+            _stream_buf += nerd;
+            if(i % 42 === 0) _stream_buf += " OKEY_DOKIE_NERD_0x" + i.toString(16) + " ";
+        }
+        _bg.innerText = _stream_buf;
+        _0x_q_codes.forEach(_arr => {
+            const _w = _arr.map(_c => String.fromCharCode(_c)).join('');
+            const _d = document.createElement('div');
+            _d.className = 'row';
+            _d.innerText = _w;
+            _mqe.appendChild(_d);
+        });
+        function triggerPopEvent() {
+            const _p_node = document.createElement('div');
+            const _idx = Math.floor(Math.random() * popi.length);
+            const _selection = popi[_idx];
+            const _posX = Math.random() * (window.innerWidth - 250);
+            const _posY = Math.random() * (window.innerHeight - 150);
+            _p_node.className = 'popup_text';
+            _p_node.style.left = _posX + 'px';
+            _p_node.style.top = _posY + 'px';
+            _p_node.innerText = _selection;
+            document.body.appendChild(_p_node);
+            for(let i=0; i<20; i++) {
+                const _c = document.createElement('div');
+                _c.className = 'confetti_bit';
+                _c.style.left = (_posX + 60) + 'px';
+                _c.style.top = (_posY + 30) + 'px';
+                _c.style.backgroundColor = _hex_palette[Math.floor(Math.random() * _hex_palette.length)];
+                const tx = (Math.random() - 0.5) * 250;
+                const ty = (Math.random() - 0.5) * 250;
+                _c.style.setProperty('--tx', `${tx}px`);
+                _c.style.setProperty('--ty', `${ty}px`);
+                document.body.appendChild(_c);
+                setTimeout(() => _c.remove(), 1200);
+            }
+            setTimeout(() => _p_node.remove(), 1800);
+        }
+        const _0x_runner = () => {
+            triggerPopEvent();
+            setTimeout(_0x_runner, 1500 + Math.random() * 1500);
+        };
+        _0x_runner();
+        const _0x_junk = () => {
+            for(let x=0; x<300; x++){
+                let _trash = "0x" + (Math.random()*0xFFFFFF<<0).toString(16) + " okey dokie hiii nerdyyy strawberry tiramisu";
+                if(x % 10 === 0) console.log(`%c ${_trash}`, "color: #E38792; font-weight: bold;");
+            }
+        };
+        _0x_junk();
+    })();
+</script>
+</body>
+</html>
